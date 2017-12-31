@@ -7,11 +7,11 @@
 
 	<wm-webmidilink id="wmlink"></wm-webmidilink>
 
-	input: <select id="midi-input"><option>Select One</option></select><span id="virtual-input"></span><br><br>
-	output: <select id="midi-output"><option>Select One</option></select><span id="virtual-output"></span><br>
+	input: <select id="midi-input"><option>Select One</option></select>
+	output: <select id="midi-output"><option>Select One</option></select><span id="virtual-output"></span>
 	<br>
 
-	<div id="msg" style="margin:30px;"></div>
+	<div id="msg" style="margin:10px;"></div>
 
 	<script type="text/javascript">
 	var midi={"inputs":[], "outputs":[]};
@@ -55,8 +55,6 @@
 			inputSelIdx=event.target.value;
 			midi.inputs[event.target.value].onmidimessage=eventOut;
 
-			document.querySelector("#virtual-input").innerHTML=""
-
 		});
 		function eventOut(event) {
 			for(var i=0, out=[]; i<event.data.length; i++) out.push(("00"+event.data[i].toString(16)).substr(-2));
@@ -74,6 +72,5 @@
 		console.log("[ERROR] ", msg);
 	}
 	</script>
-
   </body>
 </html>

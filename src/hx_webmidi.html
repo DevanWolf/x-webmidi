@@ -17,7 +17,8 @@
 	var midi={"inputs":[], "outputs":[]};
 	var outputSelIdx=null;
 	var inputSelIdx=null;
-	navigator.requestMIDIAccess({sysex:confirm("Do you want SysEx support?")}).then(successCallback, errorCallback);
+	var sysExEnabled=confirm("Do you want SysEx support?");
+	navigator.requestMIDIAccess({sysex:sysExEnabled}).then(successCallback, errorCallback);
 	function successCallback(access) {
 		var outputIterator = access.outputs.values();
 		for (var o = outputIterator.next(); !o.done; o = outputIterator.next()) {
